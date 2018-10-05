@@ -1,0 +1,13 @@
+# Serial console output
+enable_uart=1
+
+#64-bit mode
+arm_control=0x200
+
+kernel=kernel8.img
+
+device_tree_address=0x100
+device_tree_end=0x8000
+
+dtparam=i2c_arm=on
+dtparam=spi=on

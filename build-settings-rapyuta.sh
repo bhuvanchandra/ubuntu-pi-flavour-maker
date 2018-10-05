@@ -24,6 +24,9 @@ RELEASE="xenial"
 VERSION="16.04.2"
 QUALITY=""
 
+CPU_ARCH="arm64"
+#CPU_ARCH="armhf"
+
 # Either 'ext4' or 'f2fs'
 FS_TYPE="ext4"
 
@@ -33,15 +36,13 @@ FS_SIZE=5
 # Either 0 or 1.
 # - 0 don't make generic rootfs tarball
 # - 1 make a generic rootfs tarball
-MAKE_TARBALL=0
+MAKE_TARBALL=1
 
-TARBALL="${FLAVOUR}-${RELEASE}-${VERSION}${QUALITY}-armhf-rootfs.tar.bz2"
+TARBALL="${FLAVOUR}-${RELEASE}-${VERSION}${QUALITY}-${CPU_ARCH}-rootfs.tar.bz2"
 TIMESTAMP=$(date +%Y-%m-%d)	
-IMAGE="${TIMESTAMP}-rapyuta-robotics-xenial-ros-raspberry-pi.img"
-#IMAGEDIR=/media/rapyuta-robotics/os/debian-based/images
-IMAGEDIR=/run/media/dvb/work/rapyuta-robotics/os/debian-based/images
-#BASEDIR=/media/rapyuta-robotics/os/debian-based/build/image-builds/${RELEASE}
-BASEDIR=/run/media/dvb/work/rapyuta-robotics/os/debian-based/build/image-builds/${RELEASE}
+IMAGE="${TIMESTAMP}-${FLAVOUR}-ubuntu-${RELEASE}-ros-raspberrypi-${CPU_ARCH}.img"
+IMAGEDIR=${HOME}/ubuntu/images
+BASEDIR=${HOME}/ubuntu/build/image-builds/${RELEASE}
 BUILDDIR=${BASEDIR}/${FLAVOUR}
 BASE_R=${BASEDIR}/base
 DESKTOP_R=${BUILDDIR}/desktop
@@ -49,9 +50,9 @@ DEVICE_R=${BUILDDIR}/pi
 ARCH=$(uname -m)
 export TZ=UTC
 
-IMAGE_HOSTNAME="ubuntu"
+IMAGE_HOSTNAME="rapyuta"
 
-USERNAME="ubuntu"
+USERNAME="rapyuta"
 OEM_CONFIG=0
 
 HEADLESS=1
